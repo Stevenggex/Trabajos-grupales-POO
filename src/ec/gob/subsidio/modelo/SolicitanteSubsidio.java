@@ -15,6 +15,84 @@ public class SolicitanteSubsidio {
         this.cantidadVehiculos = cantidadVehiculos;
         this.viveEnEcuador = viveEnEcuador;
     }
+     public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public double getIngresosMensuales() {
+        return ingresosMensuales;
+    }
+    public void setIngresosMensuales(double ingresosMensuales) {
+        if (ingresosMensuales >= 470) {
+            this.ingresosMensuales = ingresosMensuales;
+        } else {
+            System.out.println("Ingreso inválido. Se asigna mínimo permitido (470).");
+            this.ingresosMensuales = 470;
+        }
+    }
+
+    public int getCantidadVehiculos() {
+        return cantidadVehiculos;
+    }
+    public void setCantidadVehiculos(int cantidadVehiculos) {
+        if (cantidadVehiculos >= 0) {
+            this.cantidadVehiculos = cantidadVehiculos;
+        } else {
+            System.out.println("Cantidad inválida. Se asigna 0.");
+            this.cantidadVehiculos = 0;
+        }
+    }
+
+    public boolean isViveEnEcuador() {
+        return viveEnEcuador;
+    }
+
+    public void setViveEnEcuador(boolean viveEnEcuador) {
+        this.viveEnEcuador = viveEnEcuador;
+    }
+    public boolean subsidioAprobado() {
+        return ingresosMensuales <= 1200 &&
+               cantidadVehiculos <= 1 &&
+               viveEnEcuador;
+    }
+     public void generarResultado() {
+        if (subsidioAprobado()) {
+            System.out.println(" Subsidio APROBADO");
+        } else {
+            System.out.println("Subsidio RECHAZADO");
+            
+            if (ingresosMensuales > 1200) {
+                System.out.println("Ingresos mayores a $1200");
+            }
+            if (cantidadVehiculos > 1) {
+                System.out.println("Tiene más de un vehículo");
+            }
+            if (!viveEnEcuador) {
+                System.out.println("No reside en Ecuador");
+            }
+        }
+    }
+    public double calcularConsumoMensual() {
+        double km = 1000; // base
+        return km / 40;
+    }
+
+    public double calcularConsumoMensual(double kmExtra) {
+        double km = 1000 + kmExtra;
+        return km / 40;
+    }
 
     @Override
     public String toString(){
