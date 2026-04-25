@@ -23,7 +23,7 @@ public class Main {
 
         System.out.print("¿Vive en Ecuador? (true/false): ");
         boolean viveEnEcuador = sc.nextBoolean();
-        
+
         SolicitanteSubsidio solicitante = new SolicitanteSubsidio(
                 nombre, cedula, ingresos, vehiculos, viveEnEcuador
         );
@@ -31,10 +31,10 @@ public class Main {
         System.out.println(solicitante.toString());
 
         solicitante.generarResultado();
-        
+
         double consumoBase = solicitante.calcularConsumoMensual();
         System.out.println("\nConsumo mensual (sin km extra): " + consumoBase + " galones");
-        
+
         System.out.print("\nIngrese kilómetros extra recorridos este mes: ");
         double kmExtra = sc.nextDouble();
 
@@ -44,4 +44,3 @@ public class Main {
         sc.close();
     }
 }
-
