@@ -23,6 +23,14 @@ public class Main {
 
         SolicitanteSubsidio sol = new SolicitanteSubsidio(nombre, cedula, ingresos, vehiculosCant, vive);
         System.out.println(sol.toString());
+        System.out.println("\n--- DATOS ---");
+        System.out.println(sol);
+        System.out.println("\n--- RESULTADO ---");
+        s.generarResultado();
+        System.out.println("\nConsumo mensual base: " + s.calcularConsumoMensual() + " galones");
+        System.out.println("Consumo con extra: " + s.calcularConsumoMensual(200) + " galones");
+
+
     }
 
 
