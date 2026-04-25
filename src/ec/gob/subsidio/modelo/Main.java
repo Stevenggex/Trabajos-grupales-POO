@@ -3,36 +3,45 @@ package ec.gob.subsidio.modelo;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Ingrese su nombre completo: ");
+        SolicitanteSubsidio.mostrarReglasSubsidio();
+
+        System.out.print("Ingrese nombre completo: ");
         String nombre = sc.nextLine();
 
-        System.out.println("Ingrese su cedula: ");
+        System.out.print("Ingrese cédula: ");
         String cedula = sc.nextLine();
 
-        System.out.println("Ingrese sus ingresos mensuales: ");
+        System.out.print("Ingrese ingresos mensuales: ");
         double ingresos = sc.nextDouble();
 
-        System.out.println("Ingrese la cantidad de vehiculos: ");
-        int vehiculosCant = sc.nextInt();
+        System.out.print("Ingrese cantidad de vehículos: ");
+        int vehiculos = sc.nextInt();
 
-        System.out.println("¿Vives en Ecuador?: ");
-        boolean vive = sc.nextBoolean();
+        System.out.print("¿Vive en Ecuador? (true/false): ");
+        boolean viveEnEcuador = sc.nextBoolean();
+        
+        SolicitanteSubsidio solicitante = new SolicitanteSubsidio(
+                nombre, cedula, ingresos, vehiculos, viveEnEcuador
+        );
 
-        SolicitanteSubsidio sol = new SolicitanteSubsidio(nombre, cedula, ingresos, vehiculosCant, vive);
-        System.out.println(sol.toString());
-        System.out.println("\n--- DATOS ---");
-        System.out.println(sol);
-        System.out.println("\n--- RESULTADO ---");
-        s.generarResultado();
-        System.out.println("\nConsumo mensual base: " + s.calcularConsumoMensual() + " galones");
-        System.out.println("Consumo con extra: " + s.calcularConsumoMensual(200) + " galones");
+        System.out.println(solicitante.toString());
 
+        solicitante.generarResultado();
+        
+        double consumoBase = solicitante.calcularConsumoMensual();
+        System.out.println("\nConsumo mensual (sin km extra): " + consumoBase + " galones");
+        
+        System.out.print("\nIngrese kilómetros extra recorridos este mes: ");
+        double kmExtra = sc.nextDouble();
 
+        double consumoExtra = solicitante.calcularConsumoMensual(kmExtra);
+        System.out.println("Consumo mensual (con " + kmExtra + " km extra): " + consumoExtra + " galones");
+
+        sc.close();
     }
-
-
-
 }
+
