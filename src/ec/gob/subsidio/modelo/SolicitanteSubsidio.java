@@ -15,7 +15,7 @@ public class SolicitanteSubsidio {
         this.cantidadVehiculos = cantidadVehiculos;
         this.viveEnEcuador = viveEnEcuador;
     }
-     public String getNombreCompleto() {
+    public String getNombreCompleto() {
         return nombreCompleto;
     }
 
@@ -64,15 +64,15 @@ public class SolicitanteSubsidio {
     }
     public boolean subsidioAprobado() {
         return ingresosMensuales <= 1200 &&
-               cantidadVehiculos <= 1 &&
-               viveEnEcuador;
+                cantidadVehiculos <= 1 &&
+                viveEnEcuador;
     }
-     public void generarResultado() {
+    public void generarResultado() {
         if (subsidioAprobado()) {
             System.out.println(" Subsidio APROBADO");
         } else {
             System.out.println("Subsidio RECHAZADO");
-            
+
             if (ingresosMensuales > 1200) {
                 System.out.println("Ingresos mayores a $1200");
             }
@@ -102,5 +102,13 @@ public class SolicitanteSubsidio {
                 "Ingresos mensuales: " + ingresosMensuales + "\n" +
                 "Cantidad de vehiculos: " + cantidadVehiculos + "\n" +
                 "Vive en Ecuador: " + viveEnEcuador;
+    }
+
+    public static void mostrarReglasSubsidio() {
+        System.out.println("\n===== REGLAS PARA OBTENER EL SUBSIDIO =====");
+        System.out.println("1. Ingresos mensuales menores o iguales a $1,200");
+        System.out.println("2. No poseer más de un vehículo registrado");
+        System.out.println("3. Tener residencia en Ecuador");
+        System.out.println("===========================================\n");
     }
 }
