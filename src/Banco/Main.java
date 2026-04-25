@@ -10,28 +10,21 @@ public class Main {
         CuentaInversion inversion = new CuentaInversion("003", "María López", 7000);
 
         double totalIntereses = 0;
-
-        System.out.println("===== REPORTE BANCARIO =====");
         ahorro.mostrarDatos();
         double interesAhorro = ahorro.calcularInteresMensual();
-        System.out.println("Interés mensual: $" + interesAhorro);
-        System.out.println("Saldo actualizado: $" + ahorro.getSaldo());
-        System.out.println("----------------------------");
+        System.out.println("Interés mensual: " + interesAhorro);
+        System.out.println("Saldo actualizado: " + ahorro.getSaldo());
         totalIntereses += interesAhorro;
         corriente.mostrarDatos();
         double interesCorriente = corriente.calcularInteresMensual();
-        System.out.println("Interés mensual: $" + interesCorriente);
-        System.out.println("Saldo actualizado: $" + corriente.getSaldo());
-        System.out.println("----------------------------");
+        System.out.println("Interés mensual: " + interesCorriente);
+        System.out.println("Saldo actualizado: " + corriente.getSaldo());
         totalIntereses += interesCorriente;
         inversion.mostrarDatos();
         double interesInversion = inversion.calcularInteresMensual();
-        System.out.println("Interés mensual: $" + interesInversion);
-        System.out.println("Saldo actualizado: $" + inversion.getSaldo());
-        System.out.println("----------------------------");
+        System.out.println("Interés mensual: " + interesInversion);
+        System.out.println("Saldo actualizado: " + inversion.getSaldo());
         totalIntereses += interesInversion;
-
-        // 🔹 Total
-        System.out.println("TOTAL INTERESES DEL BANCO: $" + totalIntereses);
+        System.out.println("TOTAL INTERESES DEL BANCO:" + totalIntereses);
     }
 }
