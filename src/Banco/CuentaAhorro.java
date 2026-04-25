@@ -13,9 +13,10 @@ public class CuentaAhorro extends CuentaBancaria {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
+        double interes = calcularInteresMensual();
         return "\n====== CUENTA DE AHORROS ======\n" +
                 super.toString() + "\n" +
-                "Interes mensual: $ " + String.format("%.2f" + calcularInteresMensual());
+                "Interés mensual: $" + String.format("%.2f", interes);
     }
 }

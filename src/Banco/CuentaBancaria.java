@@ -1,6 +1,6 @@
 package Banco;
 
-public class CuentaBancaria {
+public abstract class CuentaBancaria {
     private String numeroCuenta;
     private String titularCuenta;
     private double saldo;

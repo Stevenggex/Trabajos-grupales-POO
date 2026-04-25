@@ -3,7 +3,7 @@ package Banco;
 public class CuentaCorriente extends CuentaBancaria{
     private static final double LIMITE_SOBREGIRO = 500;
 
-    public CuentaCorriente(tring numeroCuenta, String titularCuenta, double saldo){
+    public CuentaCorriente(String numeroCuenta, String titularCuenta, double saldo){
         super(numeroCuenta, titularCuenta, saldo);
     }
 

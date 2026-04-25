@@ -1,4 +1,4 @@
-package banco.modelo;
+package Banco;
 
 public class CuentaInversion extends CuentaBancaria {
 
@@ -6,15 +6,29 @@ public class CuentaInversion extends CuentaBancaria {
         super(numeroCuenta, titular, saldo);
     }
 
+    // Tasa variable según el saldo
+    private double getTasaAnual() {
+        if (getSaldo() < 1000) {
+            return 0.04;
+        } else if (getSaldo() <= 5000) {
+            return 0.05;
+        } else {
+            return 0.06;
+        }
+    }
+
     @Override
     public double calcularInteresMensual() {
-        double tasa;
-        if (saldo < 1000) tasa = 0.04;
-        else if (saldo <= 5000) tasa = 0.05;
-        else tasa = 0.06;
+        return getSaldo() * (getTasaAnual() / 12);
+    }
 
-        double interes = saldo * tasa / 12;
-        saldo += interes;
-        return interes;
+    @Override
+    public String toString() {
+        double interes = calcularInteresMensual();
+        double tasa = getTasaAnual() * 100;
+        return "\n====== CUENTA DE INVERSIÓN ======\n" +
+                super.toString() + "\n" +
+                "Tasa anual aplicada: " + tasa + "%\n" +
+                "Interés mensual: $" + String.format("%.2f", interes);
     }
 }

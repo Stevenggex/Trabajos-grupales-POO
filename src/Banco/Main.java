@@ -1,30 +1,36 @@
-package banco;
+package Banco;
 
-import banco.modelo.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-
     public static void main(String[] args) {
-        CuentaAhorros ahorro = new CuentaAhorros("001", "Ana Pérez", 1200);
-        CuentaCorriente corriente = new CuentaCorriente("002", "Luis Gómez", 800);
-        CuentaInversion inversion = new CuentaInversion("003", "María López", 7000);
+
+        // Crear las cuentas con los datos de prueba
+        CuentaBancaria cuentaAna   = new CuentaAhorro  ("001-AHO", "Ana Pérez",    1200);
+        CuentaBancaria cuentaLuis  = new CuentaCorriente("002-CTE", "Luis Gómez",    800);
+        CuentaBancaria cuentaMaria = new CuentaInversion("003-INV", "María López",  7000);
+
+        // Almacenar todas en la colección polimórfica
+        List<CuentaBancaria> cuentas = new ArrayList<>();
+        cuentas.add(cuentaAna);
+        cuentas.add(cuentaLuis);
+        cuentas.add(cuentaMaria);
+
+        // Mostrar reporte de cada cuenta usando polimorfismo
+        System.out.println("\n========================================");
+        System.out.println("     REPORTE MENSUAL DEL BANCO          ");
+        System.out.println("========================================");
 
         double totalIntereses = 0;
-        ahorro.mostrarDatos();
-        double interesAhorro = ahorro.calcularInteresMensual();
-        System.out.println("Interés mensual: " + interesAhorro);
-        System.out.println("Saldo actualizado: " + ahorro.getSaldo());
-        totalIntereses += interesAhorro;
-        corriente.mostrarDatos();
-        double interesCorriente = corriente.calcularInteresMensual();
-        System.out.println("Interés mensual: " + interesCorriente);
-        System.out.println("Saldo actualizado: " + corriente.getSaldo());
-        totalIntereses += interesCorriente;
-        inversion.mostrarDatos();
-        double interesInversion = inversion.calcularInteresMensual();
-        System.out.println("Interés mensual: " + interesInversion);
-        System.out.println("Saldo actualizado: " + inversion.getSaldo());
-        totalIntereses += interesInversion;
-        System.out.println("TOTAL INTERESES DEL BANCO:" + totalIntereses);
+
+        for (CuentaBancaria cuenta : cuentas) {
+            System.out.println(cuenta.toString());
+            totalIntereses += cuenta.calcularInteresMensual(); // polimorfismo puro
+        }
+
+        System.out.println("\n========================================");
+        System.out.printf("TOTAL INTERESES DEL BANCO: $%.2f%n", totalIntereses);
+        System.out.println("========================================");
     }
 }
